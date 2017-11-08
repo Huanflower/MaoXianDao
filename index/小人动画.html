@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="xiaoren">
+
+        <img src="images/mofa%20(1).png" alt=""/>
+
+</div>
+<script>
+    var count=1;
+    var box=document.getElementById("xiaoren")
+    var img=box.children[0];
+    setInterval(function(){
+        count++;
+        img.src="images/mofa%20("+count+").png";
+        if(count==35){
+            count=1;
+        }
+    },100)
+</script>
+</body>
+</html>

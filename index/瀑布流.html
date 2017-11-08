@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width: 469px;
+            height: 210px;
+        }
+        .box .pic{
+            height: auto;
+            width: 100%;
+            padding: 0px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+        .box .pic img {
+            width: 100%;
+        }
+        .face {
+            height: 100%;
+            width: 100%;
+            padding:0px;
+            box-sizing: border-box;
+            text-indent: 2em;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 5px 5px 5px #ccc;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .face .left {
+            height: 100%;
+            width: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            left: -300px;
+            top: 0;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            z-index: 88;
+        }
+        .face .right {
+            height: 100%;
+            width: 50%;
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            right: -300px;
+            top: 0;
+            z-index: 88;
+            transition: all 0.5s;
+            -webkit-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+        }
+        .face p {
+            margin-top: 30px;
+            text-align: left;
+            color: white;
+            width: 100%;
+            padding: 0px 0px;
+            font-size: 14px;
+            line-height: 20px;
+            box-sizing: border-box;
+            transition: all  0.8s;
+            -webkit-transition: all  0.8s;
+            -moz-transition: all  0.8s;
+            z-index: 999999;
+            position: absolute;
+            left: 0;
+            top: -200px;
+        }
+        .box .pic:hover .face .left {
+            left: 0px;
+        }
+        .box .pic:hover .face p {
+            top:70px;
+            text-align: center;
+        }
+        .box .pic:hover .face .right {
+            right: 0px;
+        }
+        .picNav{
+            margin-bottom: 30px ;
+        }
+        .picNav ul {
+            margin-left: 102px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="pic">
+        <img src="images/18.jpg" alt="">
+        <div class="face">
+            <p>见到你很高兴</p>
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

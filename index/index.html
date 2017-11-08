@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>冒险岛2-官方网站-腾讯游戏-放想象去冒险</title>
+        <meta name="Description" content="《冒险岛2》官方网站，是腾讯旗下全新网游大作，延续了《冒险岛》的经典游戏品牌并融入沙盒玩法，是一款拥有萌爆的可爱画面、创新的房屋系统、自由丰富的DIY系统及多种小游戏玩法的休闲网游。">
+        <meta name="Keywords" content="冒险岛2,冒险岛2官网,冒险岛2官方网站,腾讯冒险岛2,腾讯冒险岛2官网,冒险岛2下载,冒险岛2活动,冒险岛,冒险岛第二部,冒险岛2客户端下载,方块网游,冒险岛2论坛,冒险岛2社区">
+        <link rel="stylesheet" href="base.css"/>
+        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="common.js"/>
+        <link rel="stylesheet" href="index.js"/>
+        <script src="jquery-1.12.4.min.js"></script>
+        <script>
+            $(function(){
+                //全民上岛隐藏显示
+                $("#qmsd").mouseenter(function(){
+                    $("#qmsdD").stop().slideDown();
+                });
+                $("#qmsdD").mouseleave(function(){
+                    $("#qmsdD").stop().slideUp();
+                });
+                //腾讯游戏排行榜
+                $(".tx").mouseenter(function(){
+                    $(".ss").stop().slideDown();
+                });
+                $(".tx").mouseleave(function(){
+                    $(".ss").stop().slideUp();
+                });
+
+                //导航栏li显示隐藏效果
+                $(".nav-item").mouseenter(function(){
+                    $(".dwhz").stop().slideDown();
+                });
+                $(".nav-item").mouseleave(function(){
+                    $(".dwhz").stop().slideUp();
+                });
+                //video 尬萌特工队
+                $(".sp").mouseenter(function(){
+                    $(".bjs").stop().show(1000);
+                });
+                $(".sp").mouseleave(function(){
+                    $(".bjs").stop().hide(1000);
+                });
+
+                //搜索隐藏显示
+                $(".hzmt").mouseenter(function(){
+                    $(".sousuo").show();
+                });
+                $(".sp-box").mouseleave(function(){
+                    $(".sousuo").hide();
+                });
+
+                //二维码点击事件
+                $(".hd1").click(function(){
+                    $(".ewmyc1").show();
+                    $(".ewmyc2").hide();
+                });
+                $(".hd2").click(function(){
+                    $(".ewmyc2").show();
+                    $(".ewmyc1").hide();
+                })
+
+                //同盟会动画效果
+                var $lis=$("#main .down .yt ul>li");
+                $lis.mouseenter(function(){
+                    $(this).css("opacity","1").find("img").animate({width:"254",height:"180"});
+                    $(this).siblings("li").css("opacity","0.7");
+                })
+                $lis.mouseleave(function(){
+                    $(this).css("opacity","1").find("img").animate({width:"250",height:"176"})
+                })
+                $(".yt").mouseleave(function(){
+                    $lis.css("opacity","1");
+                })
+
+                //二维码下面小图标
+               $(".xtb").mouseenter(function(){
+                   $(this).css("opacity","1").siblings().css("opacity","0.3");
+               })
+                $(".sp-box ").mouseleave(function(){
+                    $(".xtb").css("opacity","1");
+                })
+
+            });
+        </script>
+    </head>
+    <body>
+    <!--头部的顶部                             start-->
+    <div id="web_tp">
+        <!--版心-->
+        <div class="container clearfix">
+            <!--腾讯游戏图片-->
+            <div class="item txyx"></div>
+            <!--全民上岛图片-->
+            <div id="qmsd" class="item qmsd"><img src="images/1.jpg" alt=""/></div>
+           <!--两个文字链接-->
+            <div class="wzlj">
+                <div class="cz item"><h3><a href="#">成长守护平台</a></h3></div>
+                <div class="tx item">
+                    <h3><a href="#">腾讯游戏排行榜</a></h3>
+                    <span class="ss"><img src="images/52.bmp" alt=""/></span>
+                </div>
+            </div>
+            <div id="qmsdD">
+                <img src="images/51.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+    <!--头部的顶部                               end-->
+    <!--导航栏                                 start-->
+    <div id="topBar">
+
+        <div class="container clearfix">
+            <!--logo图片-->
+            <div class="log"><img src="images/33.png" alt=""/></div>
+            <!--选项-->
+            <div class="menu-box">
+                <ul>
+                    <li class="nav-item"><a href="#">官网首页</a></li>
+                    <li class="nav-item"><a href="#">新闻中心</a></li>
+                    <li class="nav-item"><a href="#">游戏资料</a></li>
+                    <li class="nav-item"><a href="#">下载专区</a></li>
+                    <li class="nav-item"><a href="#">自助服务</a></li>
+                    <li class="nav-item"><a href="#">玩家互动</a></li>
+                    <li class="nav-item"><a href="#">在线商城</a></li>
+                </ul>
+            </div>
+            <!--登录-->
+            <div class="dl">
+                <buttom><a href="#">登录</a></buttom>
+                <span></span>
+            </div>
+        </div>
+
+        <!--定位盒子-->
+        <div class="dwhz">
+            <!--版心-->
+            <div class="container clearfix">
+                <!--logo图片-->
+                <div class="log"><img src="images/33.png" alt=""/></div>
+                <!--选项-->
+                <div class="menu-box">
+                    <ul>
+                        <li class="nav-item"><a href="#">官网首页</a></li>
+                        <li class="nav-item">
+                            <a href="#">新闻中心</a>
+                            <ul class="sub-nav">
+                                <li><a href="#">全部</a></li>
+                                <li><a href="#">新闻</a></li>
+                                <li><a href="#">公告</a></li>
+                                <li><a href="#">活动</a></li>
+                                <li><a href="#">媒体</a></li>
+                                <li><a href="#">玩家</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">游戏资料</a>
+                            <ul class="sub-nav">
+                                <li><a href="#">新手指南</a></li>
+                                <li><a href="#">平行世界</a></li>
+                                <li><a href="#">游戏特色</a></li>
+                                <li><a href="#">资料站</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="#">下载专区</a></li>
+                        <li class="nav-item">
+                            <a href="#">自助服务</a>
+                            <ul class="sub-nav">
+                                <li><a href="#">账号充值</a></li>
+                                <li><a href="#">兑换中心</a></li>
+                                <li><a href="#">自助客服</a></li>
+                                <li><a href="#">封号查询</a></li>
+                                <li><a href="#">安全模式</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item" id="nav-item">
+                            <a href="#">玩家互动</a>
+                            <ul class="sub-nav">
+                                <li><a href="#">攻略中心</a></li>
+                                <li><a href="#">活动中心</a></li>
+                                <li><a href="#">官方直播</a></li>
+                                <li><a href="#">同盟会</a></li>
+                                <li><a href="#">官方微博</a></li>
+                                <li><a href="#">官方论坛</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="#">在线商城</a></li>
+                    </ul>
+                </div>
+                <!--登录-->
+                <div class="dl">
+                    <buttom><a href="#">登录</a></buttom>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--导航栏                                   end-->
+    <!--广告栏                                  start-->
+    <div id="banner">
+        <!--<img src="images/41.jpg" alt=""/>-->
+        <!--版心-->
+        <div class="container clearfix">
+            <div class="banner-leftbox">
+                <img src="images/35.png " alt=""/>
+            </div>
+            <!--<div id="xiaoren">-->
+                <!--<img src="images/mofa%20(1).png" alt=""/>-->
+           <!--右盒子-->
+            <div class="banner-box">
+                <div class="download-box">
+                    <a href="#" target="_blank" class="download-btn">
+                        <div class="l-btn-icon-1">
+                            <span class="l-icon-face"></span>
+                            <span class="l-icon-mask-2"></span>
+                            <span class="l-icon-arr"></span>
+                            <span class="l-icon-arr-2"></span>
+
+                        </div>
+                        <span class="l-icon-mask"></span>
+                        <span class="l-icon-mask2"></span>
+                        <div class="download-btn-bg"></div>
+                        <span class="download-txt">
+                            客户端下载
+                        </span>
+                    </a>
+                </div>
+                <div class="cz-btn-box">
+                    <a href="#" target="_blank" ><span class="yz-icon icon-spr"></span>预约张艺兴福利</a>
+                </div>
+                <div class="sub-btn-box cf">
+                    <a href="#"  >新手指南</a><span class="sub-btn-line"></span><a href="#">蘑菇币充值</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--广告栏                                    end-->
+    <!--主体                                    start-->
+    <div id="main">
+            <!--上-->
+        <div class="up">
+            <div class="container clearfix">
+                <!-- 左列表 -->
+                <div class="left">
+                    <!-- 左大盒子 -->
+                    <ul id="main-sider">
+                        <li  class="zt"><span class="new"></span><span class="tb"></span><a href="../平行世界/index.html">平行世界</a></li>
+                        <li  class="zt"><span class="new"></span><span class="tb"></span><a href="javascript:;">游戏特色</a></li>
+                        <li  class="zt"><span class="new"></span><span class="tb"></span><a href="javascript:;">职业专题</a></li>
+                        <li  class="zt"><span class="tb"></span><a href="javascript:;">活动中心</a></li>
+                        <li  class="zt"><span class="tb"></span><a href="javascript:;">同盟会</a></li>
+                    </ul>
+                    <div class="leftxia">
+                        <a href="javascript:;">平行世界</a><a href="javascript:;">周边活动</a>
+                        <a href="javascript:;"><span class="new"></span>社区APP</a><a href="javascript:;">官方论坛</a>
+                        <a href="javascript:;">官方公众号</a><a href="javascript:;">官方微博</a>
+                        <a href="javascript:;">资料站</a><a href="javascript:;">兑换中心</a>
+                    </div>
+                </div>
+            <!-- 右列表 -->
+                <div class="right">
+                    <!-- 新闻 -->
+                    <div class="news-box item">
+                        <!--上-->
+                        <div class="news-type-box">
+                            <!--下划线-->
+                            <div class="news-bypt-hd">
+                                <!--新闻导航栏-->
+                                <div class="news-bypt-nav" id="news-bypt-nav">
+                                        <span class="line"></span>
+                                    <a href="#">全部</a>
+                                    <a href="#">新闻</a>
+                                    <a href="#">公告</a>
+                                    <a href="#">活动</a>
+                                    <a href="#">媒体</a>
+                                    <a href="#">玩家</a>
+                                    <a href="#">攻略</a>
+                                    <a href="#">+</a>
+                                </div>
+                            </div>
+                            <div class="news-type-bd">
+                                <div class="hot-news"><a href="#">张艺兴代言《冒险岛2》宣布9月21日不限号全民登岛</a></div>
+                            </div>
+                            <div class="newBd">
+                                <ul class="clone">
+                                    <li><a href="#"><span class="qian"></span>《冒险导2》不删档开放公告<span class="hou">08/30</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>【爆笑囧途】第11期&nbsp;我的女朋友是个喜怒无常的购物狂<span class="hou">09/06</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>舞林盟主第五期&nbsp;向导茜茜里元气宅舞<span class="hou">09/06</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>《冒险电台》听见惊喜&nbsp;不删档资格抽奖名单公示<span class="hou">09/05</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>爱的抱抱攻略&nbsp;幸运与眼力之间的的考验<span class="hou">09/04</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>《真心话大冒险》第12期&nbsp;既能奶又可BUFF牧师<span class="hou">09/08</span></a></li>
+                                    <li><a href="#"><span class="qian"></span>羞涩的记忆&nbsp;《小酒窝》DIY演奏欣赏<span class="hou">09/05</span></a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                     <!-- 轮播图1 -->
+                    <div class="news-right" id='box'>
+                        <div class="screen">
+                            <ul>
+                                <li class="lbt"><img src="images/10.jpg" width="470" height="355"/></li>
+                                <li class="lbt"><img src="images/11.jpg" width="470" height="355"/></li>
+                                <li class="lbt"><img src="images/12.jpg" width="470" height="355"/></li>
+                                <li class="lbt"><img src="images/14.jpg" width="470" height="355"/></li>
+                                <li class="lbt"><img src="images/15.jpg" width="470" height="355"/></li>
+                            </ul>
+                            <ol>
+                                <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+                            </ol>
+                        </div>
+                        <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+                    </div>
+                    <!-- 新闻下 -->
+                    <div class="news-down" id="news-down">
+                        <span class="t1"><img src="images/6.jpg" alt=""/></span>
+                        <span class="t2"><img src="images/2.jpg" alt=""/></span>
+                        <span class="t3"><img src="images/3.jpg" alt=""/></span>
+                        <span class="t4"><img src="images/5.jpg" alt=""/></span>
+                        <ul>
+                            <li  class="xszn"><a href="javascript:;">新手指南</a></li>
+                            <li  class="zyzt"><a href="javascript:;">职业专题</a></li>
+                            <li  class="jchd"><a href="javascript:;">精彩活动</a></li>
+                            <li  class="yxts"><a href="javascript:;">游戏特色</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- 新闻右-下 -->
+                    <div class="news-right-down">
+                        <!--链接视频-->
+                        <div class="sp fl">
+                            <span class="video"></span>
+                            <div class="bjs"><p><a href="">尬萌特工队</a></br>
+                                <a href="http://v.qq.com/page/y/6/h/y05497u5r6h.html?atm_cl=ad&amp;atm_pos=19730&amp;e_code=356654">点击查看</a></p></div>
+                            <img src="images/13.jpg" alt=""/>
+                        </div>
+                        <!--轮播图小-->
+                        <div class="sp-r box1 fr" id="screen">
+                            <ul>
+                                <li><img src="images/7.jpg" alt=""/></li>
+                                <li><img src="images/9.jpg" alt=""/></li>
+                                <li><img src="images/333.jpg" alt=""/></li>
+                                <!--放置了一个假的第一张，为了制作无缝滚动效果-->
+                                <li><img src="images/7.jpg" alt=""/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+            <!--中-->
+        <div class="middle">
+            <div class="xr"></div>
+            <div class="container">
+                <div class="g-cont">
+                    <div class="middle-area">
+                        <div class="inner-cont">
+                            <div class="raider-box">
+                                <div class="m-hd">
+                                    <h3><span class="guide-hd-icon"></span>攻略资讯</h3>
+                                </div>
+                                <div class="m-bd">
+                                    <div class="guide-warp">
+                                        <ul class="guide-box" id="guide-box">
+                                            <li class="guide-item guide-on">
+                                                <div class="guide-cont">
+                                                    <div class="guide-cont-inner">
+                                                        <ul class="g-news-list">
+                                                            <li><a href="#"  class="news-txt">最多妹子玩的职业 辅助使者牧师</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#"  class="news-txt">家装纪念品的获取途径和属性效果大全</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#"  class="news-txt">主播大白55级弓箭手技能加点技巧分享</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#"  class="news-txt" >想成为骑士竞技大神 来看骑士技能加点</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#"  class="news-txt">黑炎龙兽详细解密 带着理解去打本</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#"  class="news-txt">详解黑奴隶之城副本攻略 卡特拉姆斯上层</a><span class="news-time">09/17</span></li>
+
+                                                        </ul>
+                                                        <div class="g-d-img cf" id="guideImg1"><a target="_blank"  href="#">
+                                                            <img alt="" src="images/8.jpg" width="243" height="118"></a>
+                                                            <a target="_blank"  href="#" title="团本攻略" class="d-img-link">
+                                                                <img alt="" src="images/19.jpg" width="243" height="118"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="guide-link-box">
+                                                    <a href="#" class="guide-link">
+                                                        <span class="guide-link-txt">综合攻略</span>
+                                                        <span class="guide-link-p-icon guide-line-icon-1"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class="guide-item ">
+                                                <div class="guide-cont">
+                                                    <div class="guide-cont-inner">
+                                                        <ul class="g-news-list">
+                                                            <li><a href="#" target="_blank" class="news-txt">最多妹子玩的职业 辅助使者牧师</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">主播大白55级弓箭手技能加点技巧分享</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">想成为骑士竞技大神 来看骑士技能加点</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">岛2大咖秀专访国服第一弓手 沐神</a><span class="news-time">09/16</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">牧师进阶 55级通用加点与装备属性选择</a><span class="news-time">09/16</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">55级之后的最新狂战士技能加点解析教学</a><span class="news-time">09/16</span></li>
+                                                        </ul>
+                                                        <div class="g-d-img cf" id="guideImg2"><a target="_blank" href="#" title="重炮手" class="d-img-link">
+                                                            <img alt=""  src="images/x3.jpg" width="243" height="118"></a>
+                                                            <a target="_blank" href="#" title="骑士副本" class="d-img-link">
+                                                                <img alt="" src="images/x2.jpg" width="243" height="118"></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="guide-link-box">
+                                                    <a href="#" class="guide-link">
+                                                        <span class="guide-link-txt">职业心得</span>
+                                                        <span class="guide-link-p-icon guide-line-icon-2"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class="guide-item">
+                                                <div class="guide-cont">
+                                                    <div class="guide-cont-inner">
+                                                        <ul class="g-news-list">
+                                                            <li><a href="#" target="_blank" class="news-txt">黑炎龙兽详细解密 带着理解去打本</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >详解黑奴隶之城副本攻略 卡特拉姆斯上层</a><span class="news-time">09/17</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt">副本攻略 和我一起去探索樱花森林的秘密</a><span class="news-time">09/16</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >黑金市实验室暴动副本 战争机器人的叛乱</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >船长带你玩 竞技场趣味玩法与机制详解</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >升级从此没有坎 1到50级任务难点解析</a><span class="news-time">09/15</span></li>
+
+                                                        </ul>
+                                                        <div class="g-d-img cf" id="guideImg3"><a target="_blank"  href="#" title="黑炎龙" class="d-img-link">
+                                                            <img alt=""  src="images/19.jpg" width="243" height="118"></a>
+                                                            <a  href="#" title="奴隶" class="d-img-link">
+                                                                <img alt=""  src="images/8.jpg" width="243" height="118"></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="guide-link-box">
+                                                    <a href="#" class="guide-link">
+                                                        <span class="guide-link-txt">副本技巧</span>
+                                                        <span class="guide-link-p-icon guide-line-icon-3"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class="guide-item">
+                                                <div class="guide-cont">
+                                                    <div class="guide-cont-inner">
+                                                        <ul class="g-news-list">
+                                                            <li><a href="#" target="_blank" class="news-txt" >冒险岛2属性大进阶 装备强化系统详解</a><span class="news-time">09/14</span></li>
+                                                            <li><a href="" target="_blank" class="news-txt" >装备点数大揭秘 教你挑选好装备</a><span class="news-time">09/12</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >桀一：3分钟教你玩——双修职业牧师</a><span class="news-time">09/06</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >《大神解说》第1期 20投教你骑士进阶技巧</a><span class="news-time">09/06</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >主播20投：3分钟教你玩——防御强者不弱的骑士</a><span class="news-time">09/05</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >【新版爆料】装备洗一洗 逆天属性装备不是梦</a><span class="news-time">08/31</span></li>
+
+                                                        </ul>
+                                                        <div class="g-d-img cf" id="guideImg4"><a target="_blank"  href="#" title="弓箭手" class="d-img-link">
+                                                            <img alt=""  src="images/x2.jpg" width="243" height="118"></a>
+                                                            <a target="_blank" href="#" title="装点" class="d-img-link">
+                                                                <img alt=""  src="images/x3.jpg" width="243" height="118"></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="guide-link-box">
+                                                    <a href="#" class="guide-link">
+                                                        <span class="guide-link-txt">装备搭配</span>
+                                                        <span class="guide-link-p-icon guide-line-icon-4"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                            <li class="guide-item">
+                                                <div class="guide-cont">
+                                                    <div class="guide-cont-inner">
+                                                        <ul class="g-news-list">
+                                                            <li><a href="#" target="_blank" class="news-txt" >刀锋之影自弹尬唱演绎 海阔天空</a><span class="news-time">09/16</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >那年花开月正圆孙俪戏服还原升级版</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >玩家故事 缘分总是很奇妙注定我们在此相遇</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >《粘土达人》第12期 愤怒的小蜗牛</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >【爆笑囧图】关键时候犯职业病可是会出事的</a><span class="news-time">09/15</span></li>
+                                                            <li><a href="#" target="_blank" class="news-txt" >《冒险建筑学院》3期 房屋家具花样搭建教学</a><span class="news-time">09/14</span></li>
+                                                        </ul>
+                                                        <div class="g-d-img cf" id="guideImg5"><a target="_blank"  href="#" title="建筑" class="d-img-link">
+                                                            <img alt=""  src="images/8.jpg" width="243" height="118"></a><a target="_blank"  href="#" title="张艺兴" class="d-img-link">
+                                                            <img alt=""  src="images/19.jpg" width="243" height="118"></a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="guide-link-box">
+                                                    <a href="#" class="guide-link" ><span class="guide-link-txt">D<br>I<br>Y休闲</span><span class="guide-link-p-icon guide-line-icon-5"></span></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="guide-more-link">
+                                            <a href="#" target="_blank">
+                                                <span class="en">MORE RAIDERS</span><span class="guide-more-txt">更多资讯</span>
+                                                <div class="guide-more-link-icon"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--下-->
+         <div class="down">
+              <div class="container clearfix">
+                  <!--左盒子-->
+                <div class="left-box">
+                    <!--标题-->
+                    <div class="m-hd">
+                        <h3><span></span><a href="javascript:;">同盟会</a></h3>
+                        <!--导航栏-->
+                        <div class="m-nav-link" id="m-nav-link">
+                            <!--<ul>-->
+                                <!--<li class=m-nav><a href="javascript:;">最新</a></li>-->
+                                <!--<li class=m-nav><a href="javascript:;">攻略</a></li>-->
+                                <!--<li class=m-nav><a href="javascript:;">DIY</a></li>-->
+                                <!--<li class=m-nav><a href="javascript:;">娱乐</a></li>-->
+                                <!--<li class=m-nav><a href="javascript:;">插画</a></li>-->
+                                <!--<li class=m-nav><a href="javascript:;">漫画</a></li>-->
+                            <!--</ul>-->
+                            <a href="javascript:;">最新</a>
+                            <a href="javascript:;">攻略</a>
+                            <a href="javascript:;">DIY</a>
+                            <a href="javascript:;">娱乐</a>
+                            <a href="javascript:;">插画</a>
+                            <a href="javascript:;">漫画</a>
+                        </div>
+                        <a href="javascript:;">+</a>
+                    </div>
+                    <!--内容-->
+                    <div class="m-bd">
+                        <!--左两幅图-->
+                        <div class="zt fl">
+                            <div class="box">
+                                <div class="pic">
+                                    <img src="images/18.jpg" alt="">
+                                    <div class="face">
+                                        <p>大家好，我叫赵小唤</p>
+                                        <div class="left"></div>
+                                        <div class="right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="pic">
+                                    <img src="images/28.jpg" alt="">
+                                    <div class="face">
+                                        <p>见到你很高兴，请多多关照</p>
+                                        <div class="left"></div>
+                                        <div class="right"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<a href="#"><img src="images/18.jpg" alt=""/></a>-->
+                            <!--<a href="#"><img src="images/28.jpg" alt=""/></a>-->
+                        </div>
+                        <div class="yt fr" id="jczs1">
+                            <ul>
+                                <li><a href="#"><img src="images/d3.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d2.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/48.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/47.png" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><img src="images/62.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d6.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/d2.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/d3.jpg" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><img src="images/d4.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d3.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/d6.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/d7.jpg" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><img src="images/d8.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d5.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/d10.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/47.png" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><img src="images/d16.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d7.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/d5.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/d9.jpg" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#"><img src="images//d1.jpg" alt=""/><div><p>樱花殇【设计图】</p><p>作者：□  被柴柴后入の病喵w</p> </div></a></li>
+                                <li><span></span><a href="#"><img src="images/d10.jpg" alt=""/><div><p>贫穷乐团同款套装</p><p>作者：撒葱花</p> </div></a></li>
+                                <li><a href="#"><img src="images/48.jpg" alt=""/><div><p>艺兴喂你吃素面</p><p>作者：璐璐是个小矮子</p> </div></a></li>
+                                <li><a href="#"><img src="images/47.png" alt=""/><div><p>极炫幽光</p><p>作者：＂н灬痕迹</p> </div></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                  <!--右盒子-->
+                  <div class="right-box">
+                      <!--二维码盒子-->
+                    <div class="ewm-box">
+                        <div class="hd">
+                            <span class="hd1"><a href="javascript:;">社区APP</a></span>
+                            <span class="hd2"><a href="javascript:;">微信公众号</a></span>
+                        </div>
+                        <div class="bd">
+                            <!--动态效果-->
+                            <div class="xs">
+                                <span class="ewmyc1"><img src="images/32.png" alt=""/></span>
+                                <span class="ewmyc2"><img src="images/ewm.jpg" alt=""/></span>
+                            </div>
+
+                        </div>
+                    </div>
+                      <div class="sp-box">
+                        <ul>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                            <li  class="xtb"><a href="#"></a><span></span></li>
+                        </ul>
+                          <div class="bottom">
+                              <span></span>
+                              <div class="hzmt">合作媒体</div>
+                          </div>
+                          <div class="sousuo">
+                              <ul>
+                                  <li>17173</li>
+                                  <li>多玩</li>
+                                  <li>178</li>
+                                  <li>52PK</li>
+                                  <li>电玩巴士</li>
+                                  <li>太平洋游戏</li>
+                                  <li>COLG</li>
+                                  <li>着迷网</li>
+                                  <li>NGA玩家社区</li>
+                                  <li>5676</li>
+                                  <li>全球电竞网</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+              </div>
+         </div>
+    </div>
+    <!--主体                                    end-->
+    <!--页底                                   start-->
+    <div id="fotter">
+        <div class="container clearfix">
+            <div class="contant">
+                <p class="f-logo"><a href="#"></a></p>
+                <p class="s-logo"><a href="#"></a></p>
+                <p>
+                    <a href="#">腾讯互动娱乐</a>
+                    <span>|</span>
+                    <a href="#">服务条款</a>
+                    <span>|</span>
+                    <a href="#">广告服务</a>
+                    <span>|</span>
+                    <a href="#">腾讯游戏招聘</a>
+                    <span>|</span>
+                    <a href="#">腾讯游戏客服</a>
+                    <span>|</span>
+                    <a href="#">商务合作</a>
+                    <span>|</span>
+                    <a href="#">游戏地图</a>
+                    <span>|</span>
+                    <a href="#">游戏活动</a>
+                    <span>|</span>
+                    <a href="#">腾讯网</a>
+                    <span>|</span>
+                    <a href="#">网站导航</a>
+                </p>
+                <p>
+                    <a href="#">COPYRIGHT @ 1998-2017 TENCENT.ALL RIGHTS RESERVED.</a>
+                    <a href="#">腾讯公司版权所有</a>
+                </p>
+                <p>
+                    <a href="#">COPYRIGHT @ 2017 NEXON Korea Corporation.Licensed to Tencent Inc.inChina</a>
+                </p>
+                <p>
+                    <a href="#">ISBN 978-7-89988-706-6 </a>
+                    <span>|</span>
+                    <a href="#"> 文网游进字[2016]0083号</a>
+                </p>
+                <p>
+                    <a href="#">粤网文【2017】6138-1456号</a>
+                    <span>|</span>
+                    <a href="#"> 新广出审[2016]783号</a>
+                    <span>|</span>
+                    <a href="#">  新出网证（粤）字010号</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--页底                                    end-->
+
+    <script>
+        //1 获取元素
+        var box = document.getElementById("box");
+        var screenBox = box.children[0];//可视区域
+        var imgWid = screenBox.offsetWidth;//图片宽度
+        var ul = screenBox.children[0];//要运动的ul
+        var lisUl = ul.children;//所有的图片li
+        var ol = screenBox.children[1];//放置小方块的位置
+        var lisOl = ol.children;//要操作的小方块（默认没有内容，添加后会自动增加）
+        var arrBox = box.children[1];//左右箭头的父盒子
+        var arrLeft = arrBox.children[0];
+        var arrRight = arrBox.children[1];
+
+        var li;
+        for (var i = 0; i < lisUl.length; i++) {
+            li = document.createElement("li");
+            li.innerText = i + 1;
+            ol.appendChild(li);
+        }
+
+        lisOl[0].className = "current";
+
+        for (var i = 0; i < lisOl.length; i++) {
+            lisOl[i].index = i;
+            lisOl[i].onclick = function () {
+                //--------------------------------------------------//
+                //点击按钮1时，判断，如果当前显示的为假的第一张，直接抽到0
+                if (count == lisUl.length - 1) {
+                    ul.style.left = 0 + "px";
+                }
+                //排它法设置按钮变色效果
+                for (var i = 0; i < lisOl.length; i++) {
+                    lisOl[i].className = "";
+                }
+                this.className = "current";
+                //根据当前按钮的索引值设置ul的运动位置
+                animate(ul, -this.index * imgWid);
+                //索引同步
+                count = this.index;
+            }
+        }
+        var count = 0;
+        ul.appendChild(lisUl[0].cloneNode(true));
+        arrRight.onclick = function () {
+//---右键(抽回操作)-----点击右按钮时检测，如果当前显示的为假的第一张，再次点击右按钮时需要先进行抽回操作，然后再进行滚动
+            if (count == lisOl.length) {//count=lisUl.length-1;
+                ul.style.left = 0 + "px";
+                //ul的位置需要和count的值同步，设置left为0后，再将count设置为0；
+                count = 0;
+            }
+            count++;
+            animate(ul, -count * imgWid);
+            //右边根据count的变，颜色同步
+            for (var i = 0; i < lisOl.length; i++) {
+                lisOl[i].className = "";
+            }
+            //如果count为5，lisOl.length，设置lisOl[0]类名操作
+            if (count == 5) {
+//--------假的第一张出现
+                lisOl[0].className = "current";
+            } else {
+                //除5以外，该谁显示就显示谁
+                lisOl[count].className = "current";
+            }
+        };
+        arrLeft.onclick = function () {
+//------左键(抽回操作)----
+            if (count == 0) {
+                ul.style.left = -(lisUl.length - 1) * imgWid + "px";
+                count = lisOl.length;
+            }
+            count--;
+            animate(ul, -count * imgWid);
+            //左边根据count的变，颜色同步
+            for (var i = 0; i < lisOl.length; i++) {
+                lisOl[i].className = "";
+            }
+            lisOl[count].className = "current";
+        };
+        var timer = null;
+
+        timer = setInterval(function () {
+            arrRight.click();
+        }, 2000);
+
+        box.onmouseover = function () {
+            arrBox.style.display = "block";
+            clearInterval(timer);
+        };
+        box.onmouseout = function () {
+            arrBox.style.display = "none";
+
+            timer = setInterval(function () {
+                arrRight.click();
+            }, 2000);
+        };
+
+
+        function animate(element, target) {
+            clearInterval(element.timer);//清除旧的定时器，保证匀速运动，防止加速效果
+            element.timer = setInterval(function () {
+                //1 获取元素当前位置 使用offsetLeft属性
+                var current = element.offsetLeft;
+                //2 设置步长
+                var step = 17;
+                //根据当前位置和目标位置的大小关系进行判断
+                step = target > current ? step : -step;
+                //5 运动条件设置
+                //检测当前位置和目标位置之间的距离，如果满足一个step的距离，可以运动，否则直接运动到目标位置，结束
+                if (Math.abs(target - current) > Math.abs(step)) {
+                    //3 设置运动公式:元素位置(新) = 元素位置(旧) + 步长;
+                    current = current + step;
+                    //4 设置给元素的left值运动
+                    element.style.left = current + "px";
+                } else {
+                    //6 让element直接运动到目标位置，再清除定时器
+                    element.style.left = target + "px";
+                    clearInterval(element.timer);
+                }
+            }, 20);
+        }
+
+        //=======后期添加  addNew
+        $(function(){
+            //中间攻略资讯的手风琴效果=======
+            $("#guide-box").children().click(function(){
+                $(this).addClass("guide-on").siblings().removeClass("guide-on")
+                return false
+            })
+            $("#main-sider").children().mouseenter(function(){
+            })
+
+            // 底部同盟会增加切换效果
+            $("#m-nav-link").children("a").click(function(){
+                var index=$(this).index()
+                $(this).css({color:"red"}).siblings().css({color:"#61646f"})
+                $("#jczs1").children().eq(index).fadeIn(1000).siblings().fadeOut()
+            })
+
+            //-----
+            $("#news-down ul li").mouseenter(function(){
+                var index=$(this).index()
+                //console.log(index)
+                // $(this).children().css({color:"bule"})
+                $("#news-down span").eq(index).fadeIn(1000).siblings("span").hide()
+            })
+
+            // 顶部
+            var $lis=$("#news-bypt-nav>a");
+            var $oldUl=$(".newBd ul")
+            //要克隆的ul
+            var $newUl;
+            var num=0
+           //console.log( $lis.length)
+           for (var i = 0; i < $lis.length-1; i++) {
+                               num++
+                $newUl= $oldUl.clone(true)
+                $newUl.insertAfter($oldUl);
+                $newUl.addClass("hide")
+           }
+        //    var datas=[["1","2","3","4","6","7"],["2","3","4","5","6","10"],["2","3","4","5","6","10"],["2","3","4","5","6","10"],["2","3","4","5","6","10"],["2","3","4","5","6","10"],["2","3","4","5","6","10"]]
+        //    var str1="";
+        //    var $li=$(".clone")
+        //    for(var i=0;i<datas[0].length;i++){
+        //         $li.find("a").eq(1).text(datas[0][i])
+        //    }
+
+        //    这里怎么控制次数呢
+            // $lis.each(function(i,e){
+            //     num++
+            //     $newUl= $oldUl.clone(true)
+            //     $newUl.insertAfter($oldUl);
+            //     $newUl.addClass("hide")
+            //     if(i==$lis.length-2){
+            //         return
+            //     }
+            // })
+           // console.log(num)
+
+            //新闻内容克隆
+            $(".news-bypt-nav a").mouseenter(function(){
+                var index=$(this).index()
+                console.log(index)
+                $(".news-bypt-nav .line").animate({
+                    left:55*(index-1),
+                },200)
+                $(".newBd ul").eq(index).fadeIn()
+                .siblings().hide()
+
+
+            })
+        })
+        
+
+        //无缝滚动
+        //1 获取元素
+        var screen = document.getElementById("screen");//可视区域
+        var imgWidth = screen.offsetWidth;//图片宽度
+        var list = screen.children[0];//要运动的ul
+        var length = list.children.length;
+        var step=-10;
+        //  2、书写一个简单运动代码
+        setInterval(function(){
+            var current=list.offsetLeft;
+            if(current>-(length-1)*imgWidth){
+                current=current+step;
+                list.style.left=current+"px";
+            }else{
+                list.style.left=step+"px";
+            }
+        },60);
+
+        //3、鼠标移入时，让速度变慢
+        screen.onmouseover=function(){
+            step=-2;
+        }
+        //4、鼠标移出时，恢复速度
+        screen.onmouseout=function(){
+            step=-10;
+        }
+
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    /*取消图片底部3像素距离*/
+    .box1 {
+      width: 230px;
+      height: 170px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .box1 ul li {
+      float: left;
+    }
+    
+    .box1 ul {
+      width: 1500px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+<!--轮播图小-->
+<div class="sp-r box1 fr" id="screen">
+  <ul>
+    <li><img src="images/7.jpg" alt=""/></li>
+    <li><img src="images/9.jpg" alt=""/></li>
+    <li><img src="images/333.jpg" alt=""/></li>
+    <!--放置了一个假的第一张，为了制作无缝滚动效果-->
+    <li><img src="images/7.jpg" alt=""/></li>
+  </ul>
+</div>
+
+<script>
+  //1 获取元素
+  var screen = document.getElementById("screen");//可视区域
+  var imgWidth = screen.offsetWidth;//图片宽度
+  var list = screen.children[0];//要运动的ul
+  var length = list.children.length;
+  var step=-10;
+
+//  2、书写一个简单运动代码
+    setInterval(function(){
+      var current=list.offsetLeft;
+      if(current>-(length-1)*imgWidth){
+        current=current+step;
+        list.style.left=current+"px";
+      }else{
+        list.style.left=step+"px";
+      }
+    },40);
+
+
+  //3、鼠标移入时，让速度变慢
+    screen.onmouseover=function(){
+      step=-2;
+    }
+  //4、鼠标移出时，恢复速度
+    screen.onmouseout=function(){
+      step=-10;
+    }
+
+</script>
+</body>
+</html>
