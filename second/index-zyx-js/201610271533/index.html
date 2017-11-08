@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery响应式图片无缝轮播插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<style type="text/css">
+		*{
+	            margin: 0;
+	            padding: 0;
+	            list-style-type: none;
+	        }
+	        .banner{
+	            width: 100%;
+	            position: relative;
+	            overflow: hidden;
+	        }
+	        .banner ul{
+	            position: absolute;
+	        }
+	        .banner ul li{
+	            /*这个100%是相对于父盒子的（会把父盒子的宽度继承过来,如父盒子300%,这这里的100%就会相当于300%）*/
+	            width: 100%;
+	            height: 560px;
+	            float: left;
+	            background:  no-repeat center center;
+	        }
+	        .banner ol{
+	            /*width: 60px;*/
+	            height: 20px;
+	            background: rgba(0,0,0,0.5);
+	            position: absolute;
+	            left:50%;
+	            /*margin-left: -40px;*/
+	            bottom: 30px;
+	            padding: 0 10px;
+	            border-radius: 10px;
+	        }
+	        .banner ol li{
+	            width: 10px;
+	            height: 10px;
+	            float: left;
+	            margin: 5px 5px;
+	            background: rgba(255,255,255,0.5);
+	            border-radius: 50%;
+	            cursor: pointer;
+	        }
+	        .banner ol .current{
+	            background: rgba(255,255,255,1);
+	        }
+	        .banner i{
+	            width: 58px;
+	            height: 120px;
+	            position: absolute;
+	            top: 50%;
+	            margin-top: -60px;
+	            cursor: pointer;
+	            border-radius: 5px;
+	            display: none;
+	        }
+	        .banner .left{
+	            left: 60px;
+	            background: url('img/left_right.png') no-repeat 0 0px;
+	        }
+	        .banner .right{
+	            right: 60px;
+	            background: url('img/left_right.png') no-repeat 0px -120px;
+	        }
+	        .banner .left:hover , .banner .right:hover{
+	            background-color: rgba(0, 0, 0, 0.31);
+	        }
+	</style>
+</head>
+<body>
+	<div class="htmleaf-container">
+
+		<div class="banner">
+		        <ul>
+		        </ul>
+		        <ol>
+		        </ol>
+		        <i class="left"></i><i class="right"></i>
+		    </div>
+		<!--<div class="related">-->
+		    <!--<h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>-->
+		    <!--<a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201610234135.html">-->
+			  <!--<img src="related/1.jpg" width="300" alt="VM Carousel-jQuery响应式轮播图插件"/>-->
+			  <!--<h3>VM Carousel-jQuery响应式轮播图插件</h3>-->
+			<!--</a>-->
+			<!--<a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201610134101.html">-->
+			  <!--<img src="related/2.jpg" width="300" alt="兼容ie8的响应式jquery轮播图插件"/>-->
+			  <!--<h3>兼容ie8的响应式jquery轮播图插件</h3>-->
+			<!--</a>-->
+		<!--</div>-->
+	</div>
+	
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript">
+		$(function(){ //页面加载完毕才执行
+
+            //=========设置参数==========
+            //图片统一高度：
+            var images_height = '888px';
+            //图片路径/链接(数组形式):
+            var images_url = [
+                'img/lunbo1.jpg',
+                'img/lunbo2-1.jpg',
+				'img/lunbo2-1.jpg',
+				'img/lunbo3-1.jpg',
+				'img/lunbo4-1.jpg',
+				'img/lunbo5-1.jpg',
+				'img/lunbo6-1.jpg',
+
+            ];
+            var images_count = images_url.length;
+            //console.log(images_count);
+
+            //创建节点
+            //图片列表节点
+            for(var j=0;j<images_count+1;j++){
+                $('.banner ul').append('<li></li>')
+            }
+            //轮播圆点按钮节点
+            for(var j=0;j<images_count;j++){
+                if(j==0){
+                    $('.banner ol').append('<li class="current"></li>')
+                }else{
+                    $('.banner ol').append('<li></li>')
+                }
+            }
+
+            //载入图片
+            $('.banner ul li').css('background-image','url('+images_url[0]+')');
+            $.each(images_url,function(key,value){
+                $('.banner ul li').eq(key).css('background-image','url('+value+')');
+            });
+
+            $('.banner').css('height',images_height);
+
+            $('.banner ul').css('width',(images_count+1)*100+'%');
+
+            $('.banner ol').css('width',images_count*20+'px');
+            $('.banner ol').css('margin-left',-images_count*20*0.5-10+'px');
+
+            //=========================
+
+            var num = 0;
+            //获取窗口宽度
+            var window_width = $(window).width();
+            $(window).resize(function(){
+                window_width = $(window).width();
+                $('.banner ul li').css({width:window_width});
+                clearInterval(timer);
+                nextPlay();
+                timer = setInterval(nextPlay,2000);
+            });
+            //console.log(window_width);
+            $('.banner ul li').width(window_width);
+            //轮播圆点
+            $('.banner ol li').mouseover(function(){//用hover的话会有两个事件(鼠标进入和离开)
+                $(this).addClass('current').siblings().removeClass('current');
+                //第一张图： 0 * window_width
+                //第二张图： 1 * window_width
+                //第三张图： 2 * window_width
+                //获取当前编号
+                var i = $(this).index();
+                //console.log(i);
+                $('.banner ul').stop().animate({left:-i*window_width},500);
+                num = i;
+            });
+            //自动播放
+            var timer = null;
+            function prevPlay(){
+                num--;
+                if(num<0){
+                    //悄悄把图片跳到最后一张图(复制页,与第一张图相同),然后做出图片播放动画，left参数是定位而不是移动的长度
+                    $('.banner ul').css({left:-window_width*images_count}).stop().animate({left:-window_width*(images_count-1)},500);
+                    num=images_count-1;
+                }else{
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                }
+                if(num==images_count-1){
+                    $('.banner ol li').eq(images_count-1).addClass('current').siblings().removeClass('current');
+                }else{
+                    $('.banner ol li').eq(num).addClass('current').siblings().removeClass('current');
+
+                }
+            }
+            function nextPlay(){
+                num++;
+                if(num>images_count){
+                    //播放到最后一张(复制页)后,悄悄地把图片跳到第一张,因为和第一张相同,所以难以发觉,
+                    $('.banner ul').css({left:0}).stop().animate({left:-window_width},500);
+                    //css({left:0})是直接悄悄改变位置，animate({left:-window_width},500)是做出移动动画
+                    //随后要把指针指向第二张图片,表示已经播放至第二张了。
+                    num=1;
+                }else{
+                    //在最后面加入一张和第一张相同的图片，如果播放到最后一张，继续往下播，悄悄回到第一张(肉眼看不见)，从第一张播放到第二张
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                }
+                if(num==images_count){
+                    $('.banner ol li').eq(0).addClass('current').siblings().removeClass('current');
+                }else{
+                    $('.banner ol li').eq(num).addClass('current').siblings().removeClass('current');
+
+                }
+            }
+            timer = setInterval(nextPlay,2000);
+            //鼠标经过banner，停止定时器,离开则继续播放
+            $('.banner').mouseenter(function(){
+                clearInterval(timer);
+                //左右箭头显示(淡入)
+                $('.banner i').fadeIn();
+            }).mouseleave(function(){
+                timer = setInterval(nextPlay,2000);
+                //左右箭头隐藏(淡出)
+                $('.banner i').fadeOut();
+            });
+            //播放下一张
+            $('.banner .right').click(function(){
+                nextPlay();
+            });
+            //返回上一张
+            $('.banner .left').click(function(){
+                prevPlay();
+            });
+        });
+	</script>
+</body>
+</html>

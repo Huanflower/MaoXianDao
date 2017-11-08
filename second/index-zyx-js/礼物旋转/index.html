@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>跨浏览器控制图片旋转jquery插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>跨浏览器控制图片旋转jquery插件 <span>Cross-browser jQuery Image Rotation Plugin</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Image-Effects/201705104502.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div class="container">
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-md-4">
+					<h4>示例一：图片旋转</h4>
+					<img src="img/internet-explorer_64x64.png" id="img1" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+$("#img").rotate(45);
+//或者
+$("#img").rotate({angle: 45});						
+					</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例二：鼠标滑过旋转</h4>
+					<img src="img/safari_64x64.png" id="img2" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+$("#img").rotate({
+  bind:
+  {
+    mouseover : function() {
+    $(this).rotate({animateTo:180})
+  },
+  mouseout : function() {
+    $(this).rotate({animateTo:0})
+    }
+  }
+
+});						
+					</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例三：图片无限旋转</h4>
+					<img src="img/chrome_64x64.png" id="img3" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+var angle = 0;
+setInterval(function(){
+  angle+=3;
+$("#img").rotate(angle);
+},50);					
+					</pre>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例四：图片无限旋转（使用回调函数）</h4>
+					<img src="img/internet-explorer_64x64.png" id="img4" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+var rotation = function (){
+  $("#img").rotate({
+    angle:0,
+    animateTo:360,
+    callback: rotation
+  });
+}
+rotation();					
+					</pre>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例六：图片无限旋转（使用回调函数并自定义easing动画）</h4>
+					<img src="img/safari_64x64.png" id="img5" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+var rotation = function (){
+  $("#img").rotate({
+    angle:0,
+    animateTo:360,
+    callback: rotation,
+    easing: function (x,t,b,c,d){ // t: current time, b: begInnIng value, c: change In value, d: duration
+      return c*(t/d)+b;
+    }
+  });
+}
+rotation();					
+					</pre>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例六：点击图片旋转（使用jquery.easing插件）</h4>
+					<img src="img/chrome_64x64.png" id="img6" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+$("#img").rotate({
+  bind:
+  {
+    click: function(){
+      $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })
+    }
+  }
+});					
+					</pre>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">
+					<h4>示例七：点击图片旋转指定的角度</h4>
+					<img src="img/internet-explorer_64x64.png" id="img7" alt="">
+				</div>
+				<div class="col-md-8">
+					<pre>
+var value = 0
+$("#img").rotate({
+  bind:
+  {
+    click: function(){
+      value +=90;
+      $(this).rotate({ animateTo:value})
+    }
+  }
+});					
+					</pre>
+				</div>
+			</div>
+
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201611164197.html">
+			  <img src="related/1.jpg" width="300" alt="jquery和CSS3带倒影的3D万花筒旋转动画特效"/>
+			  <h3>jquery和CSS3带倒影的3D万花筒旋转动画特效</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201704044437.html">
+			  <img src=related/2.jpg" width="300" alt="jquery和CSS3 3d立方体旋转特效"/>
+			  <h3>jquery和CSS3 3d立方体旋转特效</h3>
+			</a>
+		</div>
+	</div>
+	
+	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="js/jQueryRotate.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//示例一
+			$("#img1").rotate(45);
+			//示例二
+			$("#img2").rotate({
+			  bind:
+			  {
+			    mouseover : function() {
+			    $(this).rotate({animateTo:180})
+			  },
+			  mouseout : function() {
+			    $(this).rotate({animateTo:0})
+			    }
+			  }
+
+			});
+			//示例三
+			var angle = 0;
+			  setInterval(function(){
+			    angle+=3;
+			  $("#img3").rotate(angle);
+			  },50);
+
+			 //示例4
+			 var rotation = function (){
+			  $("#img4").rotate({
+			    angle:0,
+			    animateTo:360,
+			    callback: rotation
+			  });
+			}
+			rotation();
+
+			//示例5
+			var rotation = function (){
+			  $("#img5").rotate({
+			    angle:0,
+			    animateTo:360,
+			    callback: rotation,
+			    easing: function (x,t,b,c,d){       
+			      return c*(t/d)+b;
+			    }
+			  });
+			}
+			rotation();
+
+			//示例6
+			$("#img6").rotate({
+			  bind:
+			  {
+			    click: function(){
+			      $(this).rotate({ angle:0,animateTo:180,easing: $.easing.easeInOutExpo })
+			    }
+			  }
+
+			});
+
+			//示例7
+			var value = 0
+			$("#img7").rotate({
+			  bind:
+			  {
+			    click: function(){
+			      value +=90;
+			      $(this).rotate({ animateTo:value})
+			    }
+			  }
+			});
+
+		})	
+	</script>
+
+</body>
+</html>

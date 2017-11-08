@@ -1,0 +1,630 @@
+body{
+    background-color: #341e0e;
+
+}
+/*----------登录框-------------*/
+#login {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+#login .login-box {
+    width: 618px;
+    height: 368px;
+    background: #fff;
+    /* border: 1px solid red; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center
+}
+#login .login-box .p1 {
+    padding-top: 26px;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+}
+#login .login-box p {
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+}
+#login .login-box .p2 a {
+    color: #3481cf;
+    /* text-decoration: underline */
+}
+#login .login-box .p2 a:hover {
+    text-decoration: underline
+}
+#login .login-box .code {
+    background: #fff;
+    width: 111px;
+    height: 111px;
+    border: 1px solid #ccc;
+    padding: 3px;
+    position: absolute;
+    margin-left: 50%;
+    transform: translateX(-50px);
+    top: 153px;
+    z-index: 999
+}
+#login .login-box .sjpic {
+    width: 165px;
+    height: 500px;
+    background: url("../index-zyx-images/code111.jpg") no-repeat;
+    position: absolute;
+    top: 117px;
+    left: 325px;
+    display: none;
+}
+/* 账号注册 */
+#login .login-box .zhzc {
+    position: absolute;
+    bottom: 12px;
+    right: 4px;
+}
+#login .login-box .zhzc li {
+    float: left;
+    font-size: 12px;
+    line-height: 12px
+}
+#login .login-box .zhzc li a{
+    text-decoration: none;
+    color: #666
+}
+#login .login-box .zhzc li a:hover{
+    text-decoration: underline
+}
+
+#login .login-box .zhzc li.line {
+    border-left: 1px solid #ccc;
+    margin: 0 12px;
+    height: 12px;
+}
+/*      关闭按钮        */
+#login .login-box .close {
+    width: 50px;
+    height: 20px;
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 1px soild #ccc;
+    cursor: pointer;
+}
+/*-----------------top-banner顶部广告栏star-----------------------*/
+#top-banner{
+    width:1366px;
+    position: relative;
+    background-color: #fff;
+}
+#top-banner .container{
+    height: 42px;
+    background-color: #fff;
+    position: relative;
+}
+#top-banner .logo{
+    margin-left: 311px;
+    float: left;
+}
+#top-banner .mlkz {
+    float: left;
+    cursor: pointer;
+}
+/*盟里开战*/
+#top-banner .mlkz .mlkz-h{
+    position: absolute;
+    top: 42px;
+    left: 150px;
+    z-index: 3;
+    display: none;
+}
+#top-banner .czpt {
+    line-height: 42px;
+    width: 120px;
+    float: left;
+}
+#top-banner .txpt{
+    line-height: 42px;
+    cursor: pointer;
+}
+#top-banner .czpt span {
+    padding-left: 2px;
+}
+/*-----------------top-banner顶部广告栏end-----------------------*/
+#zyx-header{
+    margin-top:0px;
+    line-height:47px;
+    height: 47px;
+    background:url(../index-zyx-images/top-header-bg.png) repeat-x 0 0;
+    prosition:relative;
+}
+
+#zyx-header .zyx-header-con{
+  /*margin:0 40px 0 60px;*/
+  heigth: 47px;
+}
+
+#zyx-header .zyx-header-con  .headerl li{
+    padding:0 10px;
+    height: 30px;
+
+}
+#zyx-header .zyx-header-con li a{
+    font-size:12px;
+}
+
+#zyx-header .zyx-header-con .headerl ul li+li{
+    border-left:1px solid #000;
+    line-height:47px;
+    height: 47px;
+}
+
+#zyx-header .zyx-header-con .headerl ul li:first-child a {
+    width: 66px;
+    height: 37px;
+    display:block;
+    margin-top:5px;
+    background:url(../index-zyx-images/gheader-top-logo.png) no-repeat 0 0;
+}
+#zyx-header .zyx-header-con .headerr{
+    /*width: 205px;*/
+
+}
+#zyx-header .zyx-header-con .headerr ul li:last-child{
+    margin-left:0;
+}
+
+#zyx-header .zyx-header-con .headerr ul li:last-child a{
+    width: 88px;
+    text-align: center;
+    height: 33px;
+    line-height:33px;
+    margin:7px 8px 0 0 ;
+    display:block;
+    background:url(../index-zyx-images/top-header-bg.png) no-repeat 0 -143px;
+}
+#zyx-header .zyx-header-con .headerr ul li:first-child a {
+    width: 108px;
+    height: 33px;
+    line-height:33px;
+    text-align: center;
+    margin:7px 8px 0 0 ;
+    display:block;
+    background:url(../index-zyx-images/top-header-bg.png) no-repeat 0 -208px;
+}
+#zyx-header .zyx-header-con .headerm{
+    margin-right:200px;
+    position:relative;
+}
+#zyx-header .zyx-header-con .headerm .blockbox{
+    position:absolute;
+    margin-right:15px;
+    /*float:right;*/
+    width:160px;
+
+}
+
+#zyx-header .zyx-header-con .headerm .hiddenbox{
+    display:none;
+    width: 350px;
+    height: 140px;
+    position:absolute;
+    top:0;
+    right:-200px;
+
+    background:rgba(0,0,0,0.3);
+}
+#zyx-header .zyx-header-con .headerm .hiddenbox .hiddenl{
+    float:left;
+    margin-right:20px;
+    margin:10px;
+}
+#zyx-header .zyx-header-con .headerm .hiddenbox .hiddenl img{
+     width: 100px;
+     height: 100px;
+     padding:5px;
+     background:#fff;
+ }
+#zyx-header .zyx-header-con .headerm .hiddenbox  p{
+    color:#fff;
+    width: 110px;
+    height: 15px;
+    line-height:10px;
+    text-align:center;
+    margin-top:4px;
+}
+#zyx-header .zyx-header-con .headerm .hiddenbox .hiddenr{
+    float:left;
+    margin:10px;
+}
+#zyx-header .zyx-header-con .headerm .hiddenbox .hiddenr img{
+    width: 100px;
+    height: 100px;
+    padding:5px;
+    background:#fff;
+}
+
+#zyx-header .zyx-header-con .headerm .blockbox img {
+    width: 51px;
+    height: 51px;
+    overflow: hidden;
+    margin-right: 10px;
+    padding: 11px 6px 5px 6px;
+    background: #000;
+    background: rgba(0,0,0,.5);
+
+}
+#zyx-header .zyx-header-con .headerm .blockbox p{
+    width:64px;
+    heigth:47px;
+    line-heigth:47px;
+}
+#con1{
+
+    height: 692px;
+    min-width:1200px;
+    background:url(../index-zyx-images/main-kv-f.jpg) no-repeat;
+    background-size:cover;
+    margin:0 auto;
+    background-position:-230px;
+}
+/*---------内容模块1---------------*/
+#con1{
+    margin:0 auto;
+}
+#con1 .contain{
+    position:relative;
+    margin:0 auto;
+
+    height: 692px;
+}
+/*-----------------con1----------------*/
+#con1 .con1-top{
+    background:url(../index-zyx-images/time.png) no-repeat;
+    position:absolute;
+    width: 762px;
+    height: 45px;
+    top: 75%;
+    left: 20%;
+}
+#con1 .con1-bot{
+    position:absolute;
+    bottom:15px;
+    left:13%;
+    margin:0 auto;
+}
+#con1 .con1-bot a{
+    display:block;
+    margin-right:33px;
+    font-size:22px;
+    color:#fffafb;
+    height: 92px;
+    float:left;
+}
+#con1 .con1-bot a:nth-child(1){
+    width: 290px;
+    background:url(../index-zyx-images/allbg.png) no-repeat 0 -131px;
+}
+#con1 .con1-bot a:nth-child(2){
+    line-height:92px;
+    text-align:center;
+    width: 383px;
+    background:url(../index-zyx-images/allbg.png) no-repeat -324px -131px;
+}
+#con1 .con1-bot a:nth-child(3){
+    width: 290px;
+    background:url(../index-zyx-images/allbg.png) no-repeat -737px -131px;
+}
+/*-----------------con2----------------*/
+#con2{
+    margin:0 auto;
+    position:relative;
+    height: 400px;
+    background:url(../index-zyx-images/bg2.jpg) no-repeat top center;
+}
+#con2 .contain .yuyue{
+    margin: 0 auto;
+    position:relative;
+}
+#con2 .contain .yuyue span{
+    font-size:22px;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: bold;
+    position:absolute;
+    left:0;
+    top:15px;
+
+
+}
+#con2 .contain .yuyue span:nth-child(2){
+    color:#03d9f5;
+}
+#con2 .contain .yuyue p{
+    color:#03d9f5;
+    font-size:14px;
+    text-align: center;
+    padding-top:60px;
+}
+#con2 .contain .yuyue ul{
+    position:absolute;
+    left:8%;
+    bottom:-45px;
+
+}
+#con2 .contain .yuyue ul li{
+    font-weight: bold;
+    color: #ffff08;
+    width: 120px;
+    margin-right:127px;
+}
+#con2 .contain .yuyue ul li:nth-child(1){
+    font-size:14px;
+}
+#con2 .contain .yuyue ul li:nth-child(2){
+    font-size:15px;
+}
+#con2 .contain .yuyue ul li:nth-child(3){
+    font-size:15px;
+}
+#con2 .contain .yuyue ul li:nth-child(4){
+    font-size:18px;
+}
+#con2 .contain .yuyue ul li:nth-child(5){
+    font-size:20px;
+}
+#con2 .contain .jindutiao {
+    margin:0 auto;
+    margin-top:60px;
+    width: 1200px;
+    height: 20px;
+    background:url(../index-zyx-images/lunbo.png) no-repeat 0 -25px;
+}
+#con2 .contain .jindutiao .jdheader{
+    background: url(../index-zyx-images/lunbo_h.png) no-repeat;
+    width: 66px;
+    height: 66px;
+    position: absolute;
+    top:115px;
+    left: 45px;
+    animation: bli 2s linear infinite;
+    -webkit-animation: bli 2s linear infinite;
+}
+#con2 .contain .lingqu {
+    margin-top:30px;
+}
+#con2 .contain .lingqu ul li {
+    width: 210px;
+    text-align:center;
+    margin-right:40px;
+    margin-left:15px;
+
+
+}
+#con2 .contain .lingqu ul li p{
+    padding-top: 7px;
+    color: #fff;
+    font-size: 14px;
+    padding-bottom: 12px;
+    height: 40px;
+}
+#con2 .contain .lingqu ul li div button{
+    width: 111px;
+    height: 37px;
+    border:none;
+    background: url(../index-zyx-images/allbg.png) no-repeat -120px -262px;
+}
+#con3{
+    margin:0 auto;
+    position:relative;
+    height: 780px;
+    background:url(../index-zyx-images/bg3.jpg) no-repeat top center;
+}
+
+#con3 .contain .vBox {
+    background: #fff;
+    width: 840px;
+    height: 505px;
+    position: absolute;
+    top: 176px;
+    left: 354px;
+}
+#con3 .contain .vBox ul li {
+    display: block;
+    margin-right: 1px;
+    text-align: center;
+    overflow: hidden;
+
+}
+#con3 .contain .vBox .btn li button {
+    border:none;
+    width: 209px;
+    height: 56px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    background: #2e2e36;
+    line-height: 55px;
+}
+#con3 .contain .vBox .btn button.active {
+    background: #4078ff;
+    color: #ffff08;
+}
+#con3 .contain .vBox .botVideo li{
+    width: 840px;
+    height: 505px;
+}
+#con3 .contain .vBox .botVideo {
+    width: 840px;
+    height: 505px;
+}
+#con3 .contain .vBox .botVideo .main{
+    float: left;
+    display: none;
+}
+#con3 .contain .vBox .botVideo .main.selected{
+    display:block;
+}
+
+#con4{
+    margin:0 auto;
+    position:relative;
+    height: 800px;
+}
+#con4 .contain1 {
+    width: 1366px;
+    height: 800px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+#con4 .contain .slider {
+    position: relative;
+    width: 1366px;
+    height: 800px;
+    margin:0 auto;
+}
+#con4 .contain .slider ul li {
+    position: absolute;
+    display: none;
+}
+#con4 .contain .slider ul li img {
+    margin-left:-274px;
+}
+#con4 .contain .slider ul li:first-child{
+    display:block;
+}
+#con4 .contain .slider #arrow{
+    cursor:pointer;
+
+}
+#con4 .contain .slider #arrow .arrow-left{
+    position:absolute;
+    width: 102px;
+    height: 102px;
+    left:100px;
+    top:50%;
+    background:url(../index-zyx-images/allbg.png) no-repeat 0 0;
+}
+#con4 .contain .slider #arrow .arrow-right{
+    position:absolute;
+    width: 102px;
+    height: 102px;
+    right:200px;
+    top:50%;
+    background:url(../index-zyx-images/allbg.png) no-repeat -145px 0;
+}
+
+
+/*添加通栏*/
+#con4 .banner{
+    overflow: hidden;
+    height: 800px;
+    position: relative;
+}
+#con4 .banner ul{
+    list-style: none;
+    width: 500%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#con4 .banner ul li{
+    overflow: hidden;
+    position: relative;
+    width:20%;
+    height: 800px;
+    float: left;
+}
+#con4 .banner ul li {
+    paddving-left:-200px;
+}
+#con4 .banner ul li a{
+    position: absolute;
+    width: 100%;
+    height: 800px;
+    left: 50%;
+    margin-left: -900px;
+}
+#con5{
+    margin:0 auto;
+    position:relative;
+    height: 658px;
+    background:url(../index-zyx-images/bg5.jpg) no-repeat;
+}
+#con5 .container .text {
+    padding-top:85px;
+    padding-left:100px;
+
+}
+#con5 .container .text .guize{
+    font-size: 24px;
+    color: #7800ff;
+    font-weight: bold;
+    padding-bottom: 25px;
+}
+#con5 .container .text p{
+    font-size: 14px;
+    color: #1d2350;
+    line-height: 30px;
+}
+#con5 .container .text p span {
+    font-weight: bold;
+    color: #7800ff;
+}
+#footer {
+    width: 1366px;
+    height: 100px;
+    background:#341e0e;
+    text-align: center;
+    padding-top: 10px;
+}
+#footer a {
+    color: #5d5d5d;
+}
+
+#footer span {
+    border-left: 1px solid #5d5d5d;
+    height: 10px;
+    display: inline-block;
+    margin-top: 3px;
+    margin: 0 3px;
+}
+
+#footer p {
+    margin-top: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+ #xiaoren {
+    position:absolute;
+     width:1366px;
+     height: 600px;
+    top:12%;
+    left:15%;
+}
+
+#xiaoren img:nth-child(2){
+    padding-left:64px;
+    padding-top:49px;
+}
+

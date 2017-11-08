@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.header{
+			width: 980px;
+			height: 100px;
+			margin: 0px auto;
+			background-color: pink;
+		}
+		.banner{
+			position: relative;
+			background: #020612;
+		}
+		.banner ul{
+			list-style: none;
+			background-color: #020612;
+		}
+		.banner ul li{
+			position: absolute;
+			width: 100%;
+			height: 435px;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		.banner ul li.cur{
+			display: block;
+		}
+		.banner ul li.no1{
+			background: url(banner1/1.jpg) center top no-repeat;
+			
+		}
+		.banner ul li.no2{
+			background: url(banner1/2.jpg) center top no-repeat;
+		}
+		.banner ul li.no3{
+			background: url(banner1/3.jpg) center top no-repeat;
+		}
+		.banner ul li.no4{
+			background: url(banner1/4.jpg) center top no-repeat;
+		}
+		.banner ul li a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.banner .btns{
+			width: 980px;
+			background-color: blue;
+			margin: 0 auto;
+			position: relative;
+		}
+		.banner .btns .leftBtn{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			left: 20px;
+			top: 200px;
+			background-color: orange;
+			border-radius: 50%;
+			z-index: 10;
+		}
+		.banner .btns .rightBtn{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			right: 20px;
+			top: 200px;
+			background-color: orange;
+			border-radius: 50%;
+			z-index: 10;
+		}
+		.banner .circles{
+			width: 980px;
+			height: 435px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.banner .circles ul{
+			position: absolute;	
+			bottom: 10px;
+			left:50%;
+			margin-left: -150px;
+			width: 300px;
+			height: 20px;
+			background-color: red;
+		}
+		.fadeCover{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: black;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var nowimg = 0;
+			$(".rightBtn").click(function(){
+				nowimg++;
+				if(nowimg > $(".imageslist li").length - 1){
+					nowimg = 0;
+				}
+				$(".fadeCover").fadeIn(100,changePicAndFadeOut);
+			});
+
+			$(".num span").click(function(){
+				nowimg = $(this).index();
+				$(".fadeCover").fadeIn(100,changePicAndFadeOut);
+			});
+
+			function changePicAndFadeOut(){
+				//换图
+				$(".imageslist li").eq(nowimg).addClass("cur").siblings().removeClass("cur");
+				//淡出
+				$(this).fadeOut(400);
+				//小圆点换 cur：
+				$(".num span").eq(nowimg).addClass("cur").siblings().removeClass("cur");
+			}
+		});
+	</script>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="banner">
+		<ul class="imageslist">
+			<li class="no1 cur" style="background-color:#020612"><a href="#"></a></li>
+			<li class="no2" style="background-color:#D0DCEC"><a href="#"></a></li>
+			<li class="no3" style="background-color:#000F22"><a href="#"></a></li>
+			<li class="no4" style="background-color:#0A2725"><a href="#"></a></li>
+		</ul>
+		<div class="fadeCover"></div>
+		<div class="btns">
+			<a class="leftBtn" href="javascript:;"></a>
+			<a class="rightBtn" href="javascript:;"></a>
+		</div>
+		<div class="circles">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

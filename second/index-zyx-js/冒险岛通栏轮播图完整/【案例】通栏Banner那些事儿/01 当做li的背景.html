@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.header{
+			width: 980px;
+			height: 100px;
+			margin: 0px auto;
+			background-color: pink;
+		}
+		.banner{
+			position: relative;
+			background: #020612;
+		}
+		.banner ul{
+			list-style: none;
+			background-color: #020612;
+		}
+		.banner ul li{
+			position: absolute;
+			width: 100%;
+			height: 435px;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		.banner ul li.no1{
+			background: url(banner1/1.jpg) center top no-repeat;
+			display: block;
+		}
+		.banner ul li.no2{
+			background: url(banner1/2.jpg) center top no-repeat;
+		}
+		.banner ul li.no3{
+			background: url(banner1/3.jpg) center top no-repeat;
+		}
+		.banner ul li.no4{
+			background: url(banner1/4.jpg) center top no-repeat;
+		}
+		.banner ul li a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.banner .btns{
+			width: 980px;
+			background-color: blue;
+			margin: 0 auto;
+			position: relative;
+		}
+		.banner .btns .leftBtn{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			left: 20px;
+			top: 200px;
+			background-color: orange;
+			border-radius: 50%;
+			z-index: 10;
+		}
+		.banner .btns .rightBtn{
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			right: 20px;
+			top: 200px;
+			background-color: orange;
+			border-radius: 50%;
+			z-index: 10;
+		}
+		.banner .circles{
+			width: 980px;
+			height: 435px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.banner .circles ul{
+			position: absolute;	
+			bottom: 10px;
+			left:50%;
+			margin-left: -150px;
+			width: 300px;
+			height: 20px;
+			background-color: red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var interval = 2000;	//自动轮播间隔
+			var s = 600;			//淡出淡入时间
+			var nowimg = 0;
+			var $imageslistLis = $(".imageslist li");
+			var $circles = $(".circles ul li");
+			var liAmount = $imageslistLis.length;
+
+			//右按钮
+			$(".rightBtn").click(rightButFunc);
+			//右按钮的业务函数：
+			function rightButFunc() {
+
+				if(!$imageslistLis.is(":animated")){
+					//老的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeOut(s);
+					//信号量
+					nowimg++;
+					if (nowimg > liAmount - 1) {
+						nowimg = 0;
+					}
+					//新的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeIn(s);
+					//小圆点的cur业务：
+					changeCircle();
+				}
+			}
+
+			//左按钮
+			$(".leftBtn").click(function() {
+				if(!$imageslistLis.is(":animated")){
+					//老的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeOut(s);
+					//信号量
+					nowimg--;
+					if (nowimg < 0) {
+						nowimg = liAmount - 1;
+					}
+					//新的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeIn(s);
+					//小圆点的cur业务：
+					changeCircle();
+				}
+			});
+
+			//小圆点
+			$circles.click(function(){
+				if(!$imageslistLis.is(":animated")){
+					//老的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeOut(s);
+					//信号量
+					nowimg = $(this).index();
+					//新的信号量元素淡出
+					$imageslistLis.eq(nowimg).fadeIn(s);
+					//小圆点的cur业务：
+					changeCircle();
+				}
+			});
+
+			function changeCircle() {
+				$circles.eq(nowimg).addClass("cur").siblings().removeClass("cur");
+				$(".banner").css("background-color",$imageslistLis.eq(nowimg).attr("data-color"));
+			}
+
+			//定时器
+			var timer = setInterval(rightButFunc,interval);
+			
+			$(".banner").mouseenter(function(){
+				clearInterval(timer);
+			});
+
+			$(".banner").mouseleave(function(){
+				clearInterval(timer);
+				timer = setInterval(rightButFunc,interval);
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="banner">
+		<ul class="imageslist">
+			<li class="no1" data-color="#020612"><a href="#"></a></li>
+			<li class="no2" data-color="#D0DCEC"><a href="#"></a></li>
+			<li class="no3" data-color="#000F22"><a href="#"></a></li>
+			<li class="no4" data-color="#0A2725"><a href="#"></a></li>
+		</ul>
+		<div class="btns">
+			<a class="leftBtn" href="javascript:;"></a>
+			<a class="rightBtn" href="javascript:;"></a>
+		</div>
+		<div class="circles">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

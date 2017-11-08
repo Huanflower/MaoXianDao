@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--初始化样式  -->
+    <link rel="stylesheet" href="index-zyx-css/indexzyxBase.css">
+    <!-- 公共的样式 -->
+    <link rel="stylesheet" href="index-zyx-css/indexzyx.css">
+    <script src="index-zyx-js/jquery-1.12.4.min.js"></script>
+    <!--<script src="index-zyx-js/index.js"></script>-->
+    <script src="index-zyx-js/common.js"></script>
+    <script src="index-zyx-js/jQueryRotateCompressed.js"></script>
+    <script src="index-zyx-js/jQueryRotate3.js"></script>
+    <script src="index-zyx-js/jQueryRotate.js"></script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-1.12.4.min.js"><\/script>')</script>
+    <script type="text/javascript">
+        $(function(){ //页面加载完毕才执行
+
+            //图片统一高度：
+            var images_height = '888px';
+            //图片路径/链接(数组形式):
+            var images_url = [
+                'index-zyx-images/lunbo1.jpg',
+                'index-zyx-images/lunbo2-1.jpg',
+                'index-zyx-images/lunbo3-1.jpg',
+                'index-zyx-images/lunbo4-1.jpg',
+                'index-zyx-images/lunbo5-1.jpg',
+                'index-zyx-images/lunbo6-1.jpg',
+
+            ];
+            var images_count = images_url.length;
+            //console.log(images_count);
+
+            //创建节点
+            //图片列表节点
+            for(var j=0;j<images_count+1;j++){
+                $('.banner ul').append('<li></li>')
+            }
+            //轮播圆点按钮节点
+            for(var j=0;j<images_count;j++){
+                if(j==0){
+                    $('.banner ol').append('<li class="current"></li>')
+                }else{
+                    $('.banner ol').append('<li></li>')
+                }
+            }
+
+            //载入图片
+            $('.banner ul li').css('background-image','url('+images_url[0]+')');
+            $.each(images_url,function(key,value){
+                $('.banner ul li').eq(key).css('background-image','url('+value+')');
+            });
+
+            $('.banner').css('height',images_height);
+
+            $('.banner ul').css('width',(images_count+1)*100+'%');
+
+            $('.banner ol').css('width',images_count*20+'px');
+            $('.banner ol').css('margin-left',-images_count*20*0.5-10+'px');
+
+            //=========================
+
+            var num = 0;
+            //获取窗口宽度
+            var window_width = $(window).width();
+            $(window).resize(function(){
+                window_width = $(window).width();
+                $('.banner ul li').css({width:window_width});
+                clearInterval(timer);
+                nextPlay();
+                timer = setInterval(nextPlay,2000);
+            });
+            //console.log(window_width);
+            $('.banner ul li').width(window_width);
+            //轮播圆点
+            $('.banner ol li').mouseover(function(){//用hover的话会有两个事件(鼠标进入和离开)
+                $(this).addClass('current').siblings().removeClass('current');
+                var i = $(this).index();
+                //console.log(i);
+                $('.banner ul').stop().animate({left:-i*window_width},500);
+                num = i;
+            });
+            //自动播放
+            var timer = null;
+            function prevPlay(){
+                num--;
+                if(num<0){
+                    //悄悄把图片跳到最后一张图(复制页,与第一张图相同),然后做出图片播放动画，left参数是定位而不是移动的长度
+                    $('.banner ul').css({left:-window_width*images_count}).stop().animate({left:-window_width*(images_count-1)},500);
+                    num=images_count-1;
+                }else{
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                }
+                if(num==images_count-1){
+                    $('.banner ol li').eq(images_count-1).addClass('current').siblings().removeClass('current');
+                }else{
+                    $('.banner ol li').eq(num).addClass('current').siblings().removeClass('current');
+
+                }
+            }
+            function nextPlay(){
+                num++;
+                if(num>images_count){
+                    //播放到最后一张(复制页)后,悄悄地把图片跳到第一张,因为和第一张相同,所以难以发觉,
+                    $('.banner ul').css({left:0}).stop().animate({left:-window_width},500);
+                    //css({left:0})是直接悄悄改变位置，animate({left:-window_width},500)是做出移动动画
+                    //随后要把指针指向第二张图片,表示已经播放至第二张了。
+                    num=1;
+                }else{
+                    //在最后面加入一张和第一张相同的图片，如果播放到最后一张，继续往下播，悄悄回到第一张(肉眼看不见)，从第一张播放到第二张
+                    //console.log(num);
+                    $('.banner ul').stop().animate({left:-num*window_width},500);
+                }
+                if(num==images_count){
+                    $('.banner ol li').eq(0).addClass('current').siblings().removeClass('current');
+                }else{
+                    $('.banner ol li').eq(num).addClass('current').siblings().removeClass('current');
+
+                }
+            }
+            timer = setInterval(nextPlay,2000);
+            //鼠标经过banner，停止定时器,离开则继续播放
+            $('.banner').mouseenter(function(){
+                clearInterval(timer);
+                //左右箭头显示(淡入)
+                $('.banner i').fadeIn();
+            }).mouseleave(function(){
+                timer = setInterval(nextPlay,2000);
+                //左右箭头隐藏(淡出)
+                $('.banner i').fadeOut();
+            });
+            //播放下一张
+            $('.banner .right').click(function(){
+                nextPlay();
+            });
+            //返回上一张
+            $('.banner .left').click(function(){
+                prevPlay();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            //登录框(各种登录界面点击弹出登录框效果)
+            //header 中的登录与验证资格
+
+            var $logclick=$("#zyx-header .headerr li");
+            $logclick.click(function () {
+                console.log(1)
+                $("#login").show()
+            })
+            //con1 立即预约与下载时登录框弹出
+            $(".con1-bot").find("a").eq(0).click(function(){
+                console.log(1)
+                $("#login").show()
+            })
+            $(".con1-bot").find("a").eq(1).click(function(){
+                console.log(1)
+                $("#login").show()
+            })
+            //礼物领取时登录
+            $(".lingqu button").click(function(){
+                $("#login").show()
+                return false;
+            })
+
+            $("#login .code").mouseenter(function () {
+                $(this).animate({ left: "-50px" })
+                $("#login .sjpic").show()
+            }).mouseleave(function () {
+                $(this).animate({ left: "0" })
+                $("#login .sjpic").hide()
+            })
+
+            $("#login .close").click(function () {
+                $("#login").hide()
+            })
+            //萌力开战
+            $(".ml").mouseenter(function () {
+                $(".mlkz-h").stop().slideDown(200);
+            });
+            $(".mlkz-h").mouseenter(function () {
+                $(".mlkz-h").stop().slideUp(200);
+            });
+            //二维码显示
+            $("#blockBox").mouseenter(function () {
+                $("#hiddenBox").show(200);
+            });
+            $("#hiddenBox").mouseleave(function () {
+                $("#hiddenBox").hide();
+            });
+            //视频tab栏
+            $(".btn ").find("button").click(function () {
+                $(this).addClass("active").parent().siblings().find("button").removeClass("active");
+                var index = $(this).parent().index();
+                $(".main").eq(index).addClass("selected").siblings().removeClass("selected");
+
+            })
+            //con4轮播图
+            var count = 0;
+            var $lis = $(".slider li");
+            $(".arrow-right").click(function () {
+                count++;
+                (count == $lis.length) && (count = 0);
+                $lis.eq(count).stop().fadeIn(1000).siblings().stop().fadeOut(1000)
+
+            })
+            $(".arrow-left").click(function () {
+                count--;
+                (count == -1) && (count = $lis.length - 1);
+                $lis.eq(count).stop().fadeIn(1000).siblings().stop().fadeOut(1000)
+
+            });
+            //礼物领取是无限旋转效果
+            var angle = 0;
+            setInterval(function(){
+                angle+=3;
+                $(".lingqu ul li div img").rotate(angle);
+                $("#con1 .act1 img").rotate(angle);
+            },50);
+
+        })
+    </script>
+
+</head>
+<body>
+<!---------------登录框----------------------------->
+<div id="login">
+    <div class="bg"></div>
+    <div class="login-box">
+        <p class="p1">快速安全登录</p>
+        <p class="p2">请使用<a href="">QQ手机版</a>扫描二维码，</p>
+        <p class="p3">安全登录，防止盗号。</p>
+        <div class="code">
+            <img src="index-zyx-images/ptqrshow.png" alt="">
+        </div>
+        <div class="sjpic"></div>
+        <div class="zhzc">
+            <ul>
+                <li> <a href="#">帐号密码登录</a></li>
+                <li class="line"></li>
+                <li><a href="#">注册新帐号</a></li>
+                <li class="line"></li>
+                <li><a href="#">意见反馈</a></li>
+
+            </ul>
+        </div>
+        <div class="close">X</div>
+    </div>
+</div>
+<!--------------top-banner顶部广告栏star------------>
+<div id="top-banner">
+    <div class="container">
+        <!--logo-->
+        <div class="logo">
+            <a href="#">
+                <img src="index-zyx-images/logo.png" alt=""/>
+            </a>
+        </div>
+        <!--盟力开战-->
+        <div class="mlkz">
+            <img src="index-zyx-images/mlkz.jpg" alt="" class="ml"/>
+            <!--隐藏的盟力开战-->
+            <div class="mlkz-h">
+                <img src="index-zyx-images/toptan.jpg" alt=""/>
+            </div>
+        </div>
+
+        <!--成长平台-->
+        <div class="czpt">
+            <a href="#">
+                <img src="index-zyx-images/logo-yuan.png" alt=""/>
+                <span>成长守护平台</span>
+            </a>
+        </div>
+        <!--腾讯游戏平台-->
+        <div class="txpt">
+            <a href="#">
+                腾讯游戏平台<i></i>
+            </a>
+
+        </div>
+    </div>
+</div>
+<!--------------top-banner顶部广告栏end------------>
+
+<!--------------------网页的header----------------->
+<div id="zyx-header">
+    <!-- ---------------版心------------->
+    <div class="zyx-header-con container">
+        <!-- 左侧菜单-->
+        <div class="headerl">
+            <!------------- 左侧导航栏------->
+            <ul class="header-menu fl">
+                <li class="fl"><a href="#"></a></li>
+                <li class="fl"><a href="../首页/index.html" target="_blank">官网首页</a></li>
+                <li class="fl"><a href="#">新闻资讯</a></li>
+                <li class="fl"><a href="#">在线客服</a></li>
+                <li class="fl"><a href="#">客户端下载</a></li>
+                <li class="fl"><a href="#">官方论坛</a></li>
+            </ul>
+        </div>
+        <!-- 登录 验证资格-->
+        <div class="headerr fr">
+            <ul>
+                <li class="fr"><a href="#">验证资格</a></li>
+                <li class="fr"><a href="#">登录</a></li>
+
+            </ul>
+        </div>
+        <!-- 二维码区域-->
+        <div class="headerm fr">
+            <div id="blockBox" class="blockbox ">
+                <img src="index-zyx-images/s-qc-img.jpg" alt=""/>
+                <span>更多资讯APP</span>
+            </div>
+            <!-- 点击出现的二维码-->
+            <div id="hiddenBox" class="hiddenbox">
+                <div class="hiddenl">
+                    <img src="index-zyx-images/qc-wx-2.jpg" alt=""/>
+
+                    <p>冒险岛2微信公众号</p>
+                </div>
+                <div class="hiddenr">
+                    <img src="index-zyx-images/qc-shequ-2.png" alt=""/>
+
+                    <p>冒险岛2社区</p>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+<!--------------------网页的content----------------->
+<!----------------------内容模块1 banner------------------->
+<div id="con1">
+    <div class="contain">
+        <!-- 两个动画人物-->
+        <div id="xiaoren">
+            <img src="index-zyx-images/gongjian%20(1).png" alt="" width="450px" height="450px"/>
+            <img src="index-zyx-images/qishi%20(1).png" alt="" width="450px" height="450px"/>
+
+        </div>
+        <!-- 小人的动画效果-->
+        <script>
+            var count = 1;
+            var box = document.getElementById("xiaoren")
+            var img1 = box.children[0];
+            var img2 = box.children[1];
+            setInterval(function () {
+                count++;
+                img1.src = "index-zyx-images/gongjian%20(" + count + ").png";
+                img2.src = "index-zyx-images/qishi%20(" + count + ").png";
+                if (count == 32) {
+                    count = 1;
+                }
+            }, 150)
+        </script>
+        <!-- 活动时间-->
+        <div class="decoration">
+            <div class="decLeft">
+                <img src="index-zyx-images/fly - 副本 (2).png" alt="" />
+            </div>
+            <!--<div class="decRight">-->
+                <!--<img src="index-zyx-images/fes_ink1-2.png" alt="" />-->
+            <!--</div>-->
+            <div class="act1">
+                <img src="index-zyx-images/pet.png" alt=""/>
+            </div>
+
+        </div>
+        <script>
+            $(".decLeft").animate({
+                left:150,
+                top:200
+            },800,function(){
+                $(this).animate({
+                    left:550,
+                    top:20
+                },500)
+            })
+
+        </script>
+        <div class="con1-top"></div>
+        <!-- 三个按钮-->
+        <div class="con1-bot">
+            <a href="#"></a>
+            <a href="#"><strong>即刻预约</strong></a>
+            <a href="../首页/index.html" target="_blank"></a>
+        </div>
+    </div>
+</div>
+<!----------------------内容模块2 预约------------------->
+<div id="con2">
+    <div class="contain">
+        <!-- 预约数据-->
+        <div class="yuyue">
+            <span>已有-人预约</span>
+            <p>已参与冒险不删档的玩家可以直接领取，其他玩家可在9月21日服务器开放后创建角色领取</p>
+            <ul>
+                <li class="fl">预约达10万</li>
+                <li class="fl">预约达50万</li>
+                <li class="fl">预约达100万</li>
+                <li class="fl">预约达300万</li>
+                <li class="fl">预约达500万</li>
+            </ul>
+        </div>
+        <!-- 领取进度条-->
+        <div class="jindutiao">
+            <div class="jdheader"></div>
+        </div>
+        <!-- 领取的礼品-->
+        <div class="lingqu">
+            <ul>
+                <li class="fl">
+                    <div>
+                        <img src="index-zyx-images/pro1.png" alt=""/>
+
+                        <p>超时空太阳镜（30天）</p>
+                        <button></button>
+                    </div>
+                </li>
+                <li class="fl">
+                    <div>
+                        <img src="index-zyx-images/pro2.png" alt=""/>
+
+                        <p>甜蜜棒棒糖（30天）</p>
+                        <button></button>
+                    </div>
+                </li>
+                <li class="fl">
+                    <div>
+                        <img src="index-zyx-images/pro3.png" alt=""/>
+
+                        <p>小天使之翼（30天）</p>
+                        <button></button>
+                    </div>
+                </li>
+                <li class="fl">
+                    <div>
+                        <img src="index-zyx-images/pro4.png" alt=""/>
+
+                        <p>回忆满满滑（30天）</p>
+                        <button></button>
+                    </div>
+                </li>
+                <li class="fl">
+                    <div>
+                        <img src="index-zyx-images/pro5.png" alt=""/>
+
+                        <p>咩咩羊帽子（预约活动专属）</p>
+                        <button></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!----------------------内容模块3 视频------------------->
+<div id="con3">
+    <div class="contain">
+        <!-- ------视频切换按钮----------->
+        <div class="vBox">
+            <div class="topbtn">
+                <ul class="btn">
+                    <li class="fl">
+                        <button class="active">咩咩岛主张艺兴邀你上岛</button>
+                    </li>
+                    <li class="fl">
+                        <button>经典职业激爽团战</button>
+                    </li>
+                    <li class="fl">
+                        <button>造型造城造乐自由DIY</button>
+                    </li>
+                    <li class="fl">
+                        <button>Q萌休闲乐嗨天</button>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- ------视频------------->
+            <div class="botVideo">
+                <ul class="vd">
+                    <li class="main selected">
+                        <embed wmode="opaque"
+                               flashvars="vid=y05497u5r6h&amp;tpid=0&amp;showend=1&amp;showcfg=1&amp;searchbar=1&amp;skin=http:http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;shownext=1&amp;list=2&amp;autoplay=1"
+                               src="http://imgcache.qq.com/tencentvideo_v1/player/TPout.swf?max_age=86400&amp;v=20140714"
+                               quality="high" name="tenvideo_flash_player_1505558478730"
+                               id="tenvideo_flash_player_1505558478730" bgcolor="#000000" width="840px" height="505px"
+                               align="middle" allowscriptaccess="always" allowfullscreen="true"
+                               type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/">
+                    </li>
+                    <li class="main">
+                        <embed wmode="opaque"
+                               flashvars="vid=i0549p4i6ja&amp;tpid=0&amp;showend=1&amp;showcfg=1&amp;searchbar=1&amp;skin=http:http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;shownext=1&amp;list=2&amp;autoplay=1"
+                               src="http://imgcache.qq.com/tencentvideo_v1/player/TPout.swf?max_age=86400&amp;v=20140714"
+                               quality="high" name="tenvideo_flash_player_1505558525270"
+                               id="tenvideo_flash_player_1505558525270" bgcolor="#000000" width="840px" height="505px"
+                               align="middle" allowscriptaccess="always" allowfullscreen="true"
+                               type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/">
+                    </li>
+                    <li class="main">
+                        <embed wmode="opaque"
+                               flashvars="vid=i0549axtwvp&amp;tpid=0&amp;showend=1&amp;showcfg=1&amp;searchbar=1&amp;skin=http:http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;shownext=1&amp;list=2&amp;autoplay=1"
+                               src="http://imgcache.qq.com/tencentvideo_v1/player/TPout.swf?max_age=86400&amp;v=20140714"
+                               quality="high" name="tenvideo_flash_player_1505558550989"
+                               id="tenvideo_flash_player_1505558550989" bgcolor="#000000" width="840px" height="505px"
+                               align="middle" allowscriptaccess="always" allowfullscreen="true"
+                               type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/">
+
+                    </li>
+                    <li class="main">
+                        <embed wmode="opaque"
+                               flashvars="vid=i0549axtwvp&amp;tpid=0&amp;showend=1&amp;showcfg=1&amp;searchbar=1&amp;skin=http:http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf&amp;shownext=1&amp;list=2&amp;autoplay=1"
+                               src="http://imgcache.qq.com/tencentvideo_v1/player/TPout.swf?max_age=86400&amp;v=20140714"
+                               quality="high" name="tenvideo_flash_player_1505558550989"
+                               id="tenvideo_flash_player_1505558550989" bgcolor="#000000" width="840px" height="505px"
+                               align="middle" allowscriptaccess="always" allowfullscreen="true"
+                               type="application/x-shockwave-flash" pluginspage="http://get.adobe.com/cn/flashplayer/">
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!----------------------内容模块4 轮播图------------------->
+<div id="con4">
+    <div class="htmleaf-container">
+
+        <div class="banner">
+            <ul>
+            </ul>
+            <ol>
+            </ol>
+            <i class="left"></i><i class="right"></i>
+        </div>
+        <!--<div class="related">-->
+        <!--<h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>-->
+        <!--<a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201610234135.html">-->
+        <!--<img src="related/1.jpg" width="300" alt="VM Carousel-jQuery响应式轮播图插件"/>-->
+        <!--<h3>VM Carousel-jQuery响应式轮播图插件</h3>-->
+        <!--</a>-->
+        <!--<a href="http://www.htmleaf.com/jQuery/Slideshow-Scroller/201610134101.html">-->
+        <!--<img src="related/2.jpg" width="300" alt="兼容ie8的响应式jquery轮播图插件"/>-->
+        <!--<h3>兼容ie8的响应式jquery轮播图插件</h3>-->
+        <!--</a>-->
+        <!--</div>-->
+    </div>
+
+
+
+</div>
+
+<!-------------------内容模块5 活动规则------------------->
+<div id="con5">
+    <div class="container">
+        <div class="text">
+            <div class="guize">活动规则</div>
+            <p>1.<span>点击“即刻预约”按钮进行921尬萌不限号预约</span>，需要您绑定手机后即可进行预约，每个手机可绑定一个QQ号，敬请谅解；</p>
+
+            <p>2.<span>当预约人数达到10万，50万，100万，300万，500万时，所有预约成功的玩家都可以领取对应道具奖励</span></p>
+
+            <p>3. 活动道具奖励将自动发放到您的游戏角色邮箱内，请谨慎选择领奖角色，每个QQ限领一次；，请谨慎选择领奖角色，每个QQ限领一次；</p>
+
+            <p>4. 腾讯公司保留在法律规定内对上述规则进行解释的权利，有问题请联系在线客服；</p>
+        </div>
+    </div>
+</div>
+<!------------------------footer--------------------------->
+<div id="footer">
+    <a href="#">腾讯互动娱乐</a>
+    <span></span>
+    <a href="#">服务条款</a>
+    <span></span>
+    <a href="#">广告服务</a>
+    <span></span>
+    <a href="#">腾讯游戏招聘</a>
+    <span></span>
+    <a href="#">腾讯游戏客服</a>
+    <span></span>
+    <a href="#">游戏地图</a>
+    <span></span>
+    <a href="#">游戏活动</a>
+    <span></span>
+    <a href="#">成长守护</a>
+    <span></span>
+    <a href="#">商务合作</a>
+    <span></span>
+    <a href="#">网站导航</a>
+
+    <!--<div id="banquan">-->
+    <p>COPYRIGHT @ 1998 - 2017 TENCENT. ALL RIGHTS RESERVED</p>
+
+    <P>腾讯公司 版权所有</P>
+    <!--</div>-->
+</div>
+
+</body>
+</html>

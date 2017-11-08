@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.header{
+			width: 980px;
+			height: 100px;
+			margin: 0 auto;
+			background-color: pink;
+		}
+		.banner{
+			overflow: hidden;
+			height: 435px;
+			position: relative;
+
+		}
+		.banner ul{
+			list-style: none;
+			width: 500%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.banner ul li{
+			overflow: hidden;
+			position: relative;
+			width:20%;
+			height: 435px;
+			float: left;
+		}
+		.banner ul li a{
+			position: absolute;
+			width: 100%;
+			height: 435px;
+			left: 50%;
+			margin-left: -840px;
+		}
+		.banner ul li.no1{background-color: #020612;}
+		.banner ul li.no2{background-color: #D0DCEC;}
+		.banner ul li.no3{background-color: #000F22;}
+		.banner ul li.no4{background-color: #0A2725;}
+	</style>
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			//全局变量
+			var nowimg = 0;		//信号量，当前显示的图片序号
+			var speed = 1000;	//一张图片切换的毫秒数。
+			var intervalTime = 2000;	//间隔时间
+
+			//得到图片的总数量
+			var imageAmount = $(".imageslist li").length;
+
+			//克隆第一张图片，然后追加到最后一张去
+			//clone()就是克隆，但是光克隆没有用，一定要把克隆的元素追加到原有的HTML中。
+			//《锋利的jQuery》第62页~72页。稍微看看。
+			$(".imageslist li:first").clone().appendTo(".imageslist");
+
+			//得到所有元素，给变量名之前加$，是个约定。一眼就能知道，这个变量存放着jQuery元素。
+			var $imagesList = $(".imageslist");
+
+			//我们把右按钮要做的事情，单独提炼出一个函数。起名字。
+			//这么做的原因，是为了定时器的调用。
+			function rightBtnFunc(){
+				//分类讨论，现在到底到没到最后一张
+				if(nowimg < imageAmount - 1){
+					nowimg ++;
+					//普通运动，拉到第nowimg这张图片上
+					normalAnimate();	//调用函数，普通运动
+				}else{
+					nowimg = 0;
+					//往第5张（假0）身上拉，然后瞬间切换到0。
+					$imagesList.animate({"left" : imageAmount * -100 + "%"} , speed , function(){
+						//回调函数
+						$(this).css("left" , 0);	//css是瞬间的
+					});
+				}
+		 
+			}
+
+			 
+ 
+			//普通运动，让火车往信号上拉
+			function normalAnimate(){
+				$imagesList.animate({"left" : nowimg * -100 + "%"} , speed);
+			}
+
+
+			//定时器的业务
+			var timer = setInterval(rightBtnFunc,intervalTime);
+
+			//鼠标进入，停止
+			$(".banner").mouseenter(function(){
+				clearInterval(timer);
+			});
+
+			//鼠标离开，继续
+			$(".banner").mouseleave(function(){
+				clearInterval(timer);
+				timer = setInterval(rightBtnFunc,intervalTime);
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="banner">
+		<ul class="imageslist">
+			<li class="no1"><a href="#"><img src="banner1/1.jpg" alt="" /></a></li>
+			<li class="no2"><a href="#"><img src="banner1/2.jpg" alt="" /></a></li>
+			<li class="no3"><a href="#"><img src="banner1/3.jpg" alt="" /></a></li>
+			<li class="no4"><a href="#"><img src="banner1/4.jpg" alt="" /></a></li>
+		</ul>
+	</div>
+</body>
+</html>

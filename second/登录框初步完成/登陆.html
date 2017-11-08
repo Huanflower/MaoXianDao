@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <style>
+        /* --------------点击登陆出现的登陆框E------------------- */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            list-style: none
+        }
+
+        #login {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+        }
+        #login .login-box {
+            width: 618px;
+            height: 368px;
+            background: #fff;
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center
+        }
+        #login .login-box .p1 {
+            padding-top: 26px;
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        #login .login-box p {
+            color: #666;
+            font-size: 16px;
+            text-align: center;
+            position: relative;
+        }
+        #login .login-box .p2 a {
+            color: #3481cf;
+            /* text-decoration: underline */
+        }
+        #login .login-box .p2 a:hover {
+            text-decoration: underline
+        }
+        #login .login-box .code {
+            background: #fff;
+            width: 111px;
+            height: 111px;
+            border: 1px solid #ccc;
+            padding: 3px;
+            position: absolute;
+            margin-left: 50%;
+            transform: translateX(-50px);
+            top: 153px;
+            z-index: 999
+        }
+        #login .login-box .sjpic {
+            width: 165px;
+            height: 500px;
+            background: url("images/code111.jpg") no-repeat;
+            position: absolute;
+            top: 117px;
+            left: 325px;
+            display: none;
+        }
+        /* 账号注册 */
+        #login .login-box .zhzc {
+            position: absolute;
+            bottom: 12px;
+            right: 4px;
+        }
+        #login .login-box .zhzc li {
+            float: left;
+            font-size: 12px;
+            line-height: 12px
+        }
+        #login .login-box .zhzc li a{
+            text-decoration: none;
+            color: #666
+        }
+        #login .login-box .zhzc li a:hover{
+            text-decoration: underline 
+        }
+
+        #login .login-box .zhzc li.line {
+            border-left: 1px solid #ccc;
+            margin: 0 12px;
+            height: 12px;
+        }
+        /*      关闭按钮        */
+        #login .login-box .close {
+            width: 50px;
+            height: 20px;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-left: 1px soild #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">登陆</div>
+    <!-- 点击登陆出现的登陆栏-->
+    <div id="login">
+        <div class="bg"></div>
+        <div class="login-box">
+            <p class="p1">快速安全登录</p>
+            <p class="p2">请使用<a href="">QQ手机版</a>扫描二维码，</p>
+            <p class="p3">安全登录，防止盗号。</p>
+            <div class="code">
+                <img src="images/ptqrshow.png" alt="">
+            </div>
+            <div class="sjpic"></div>
+            <div class="zhzc">
+                <ul>
+                    <li> <a href="#">帐号密码登录</a></li>
+                    <li class="line"></li>
+                    <li><a href="#">注册新帐号</a></li>
+                    <li class="line"></li>
+                    <li><a href="#">意见反馈</a></li>
+
+                </ul>
+            </div>
+            <div class="close">X</div>
+        </div>
+    </div>
+
+
+
+    <!-- 登陆框的js -->
+    <script>
+        $(function () {
+            $(".login").click(function () {
+                console.log(1)
+                $("#login").show()
+            })
+
+            $("#login .code").mouseenter(function () {
+                $(this).animate({ left: "-50px" })
+                $("#login .sjpic").show()
+            }).mouseleave(function () {
+                $(this).animate({ left: "0" })
+                $("#login .sjpic").hide()
+            })
+
+            $("#login .close").click(function () {
+                $("#login").hide()
+            })
+        })
+    </script>
+</body>
+
+</html>
